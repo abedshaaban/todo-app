@@ -1,6 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto:ital@0;1&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   border: 0;
   box-sizing: border-box;
+  font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

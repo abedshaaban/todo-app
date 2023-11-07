@@ -6,10 +6,28 @@
     <title>Document</title>
     <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/tasks.css" />
   </head>
   <body>
+    <!-- header -->
     <header class="header">
       <a class="todo" href="/index.html">Todo</a>
     </header>
+
+    <!-- main = input + tasks -->
+    <main>
+      <section class="input-section">
+        <div class="fake-input-container">
+          <input
+            id="fishing-input"
+            type="text"
+            placeholder="Enter task"
+            class="fake-input"
+            disabled />
+
+          <span class="fake-btn">Add</span>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

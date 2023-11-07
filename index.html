@@ -17,17 +17,22 @@
     <!-- main = input + tasks -->
     <main>
       <section class="input-section">
-        <div class="fake-input-container">
-          <input
-            id="fishing-input"
-            type="text"
-            placeholder="Enter task"
-            class="fake-input"
-            disabled />
+        <div open-data-modal class="fake-input-container">
+          <div class="fake-input">Enter task</div>
 
           <span class="fake-btn">Add</span>
         </div>
+
+        <dialog data-modal>
+          <form method="dialog">
+            <button type="submit">Submit</button>
+
+            <button close-data-modal type="submit">close</button>
+          </form>
+        </dialog>
       </section>
     </main>
   </body>
+
+  <script src="./scripts/main.js"></script>
 </html>

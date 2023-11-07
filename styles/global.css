@@ -23,6 +23,9 @@ a {
 }
 
 dialog {
+  width: 100%;
+  max-width: 350px;
   padding: 1em;
   margin: auto;
+  border-radius: 9px;
 }

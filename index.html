@@ -25,6 +25,32 @@
 
         <dialog data-modal>
           <form method="dialog">
+            <div>
+              <div>
+                <label>Title</label>
+                <input type="text" id="task-title" />
+              </div>
+
+              <div>
+                <label>Description</label>
+                <input type="text" id="task-description" />
+              </div>
+
+              <div>
+                <label>Due Date</label>
+                <input type="datetime-local" id="task-due-date" />
+              </div>
+
+              <div>
+                <label>Priority</label>
+                <select id="task-priority">
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">low</option>
+                </select>
+              </div>
+            </div>
+
             <div class="input-form-footer">
               <button close-data-modal type="submit">close</button>
 

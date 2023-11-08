@@ -4,6 +4,7 @@
   padding: 0 20px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
 }
@@ -16,4 +17,9 @@
 
 .todo:hover {
   opacity: 0.7;
+}
+
+.create-task-btn {
+  color: var(--primary-white);
+  background-color: var(--primary);
 }

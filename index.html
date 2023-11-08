@@ -13,17 +13,17 @@
     <!-- header -->
     <header class="header">
       <a class="todo" href="/index.html">Todo</a>
+
+      <div>
+        <button open-data-modal class="form-footer-button create-task-btn">
+          Create Task
+        </button>
+      </div>
     </header>
 
-    <!-- main = input + tasks -->
+    <!-- main = tasks -->
     <main>
       <section class="input-section">
-        <div open-data-modal class="fake-input-container">
-          <div class="fake-input">Enter task</div>
-
-          <span class="fake-btn">Add</span>
-        </div>
-
         <dialog data-modal>
           <form id="form-task" method="dialog">
             <div class="form-header">Create Task</div>

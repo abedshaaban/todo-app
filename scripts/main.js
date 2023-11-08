@@ -78,7 +78,7 @@ if (typeof Storage !== "undefined") {
 
   const feed = document.getElementById("feed");
 
-  if (savedTasks == null) {
+  if (savedTasks == null || savedTasks.length == 0) {
     feed.innerHTML = "<p>you don't have any tasks</p>";
   } else {
     feed.innerHTML = "";
@@ -171,32 +171,11 @@ function SaveTaskToLocalStorage(title, description, dueDate, priority) {
       newTask?.dueDate,
       newTask?.priority
     ) + feed.innerHTML;
-
-  location.reload();
 }
 
 // delete task
 
-// show-hide input text
-
-const openDeleteTaskButton = document.querySelector(
-  "[open-delete-confirmation-modal]"
-);
-const closeDeleteTaskButton = document.querySelector(
-  "[close-delete-confirmation-modal]"
-);
-const DeleteTaskModal = document.querySelector("[delete-confirmation-modal]");
-const confirmedDeleteTask = document.querySelector("[confirmed-delete-task]");
-
-openDeleteTaskButton?.addEventListener("click", () => {
-  DeleteTaskModal.showModal();
-});
-
-closeDeleteTaskButton?.addEventListener("click", () => {
-  DeleteTaskModal.close();
-});
-
-confirmedDeleteTask?.addEventListener("click", () => {
+function deleteTask(confirmedDeleteTask) {
   const taskID = confirmedDeleteTask.getAttribute("task-parent");
   const taskToBeRemoved = document.getElementById(taskID);
   const oldTasks = JSON.parse(localStorage.getItem("tasks-list"));
@@ -212,6 +191,89 @@ confirmedDeleteTask?.addEventListener("click", () => {
   }
 
   localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
+}
 
-  DeleteTaskModal.close();
+function addDeleteEventListeners() {
+  const openDeleteTaskButtonList = document.querySelectorAll(
+    "[open-delete-confirmation-modal]"
+  );
+  const closeDeleteTaskButtonList = document.querySelectorAll(
+    "[close-delete-confirmation-modal]"
+  );
+  const DeleteTaskModalList = document.querySelectorAll(
+    "[delete-confirmation-modal]"
+  );
+  const confirmedDeleteTaskList = document.querySelectorAll(
+    "[confirmed-delete-task]"
+  );
+
+  openDeleteTaskButtonList.forEach((openDeleteTaskButton, i) => {
+    openDeleteTaskButton?.addEventListener("click", () => {
+      DeleteTaskModalList[i].showModal();
+    });
+  });
+
+  closeDeleteTaskButtonList.forEach((closeDeleteTaskButton, i) => {
+    closeDeleteTaskButton?.addEventListener("click", () => {
+      DeleteTaskModalList[i].close();
+    });
+  });
+
+  confirmedDeleteTaskList.forEach((confirmedDeleteTask, i) => {
+    confirmedDeleteTask?.addEventListener("click", () => {
+      deleteTask(confirmedDeleteTask);
+
+      DeleteTaskModalList[i].close();
+    });
+  });
+}
+function removeDeleteEventListeners() {
+  const openDeleteTaskButtonList = document.querySelectorAll(
+    "[open-delete-confirmation-modal]"
+  );
+  const closeDeleteTaskButtonList = document.querySelectorAll(
+    "[close-delete-confirmation-modal]"
+  );
+  const DeleteTaskModalList = document.querySelectorAll(
+    "[delete-confirmation-modal]"
+  );
+  const confirmedDeleteTaskList = document.querySelectorAll(
+    "[confirmed-delete-task]"
+  );
+
+  openDeleteTaskButtonList.forEach((openDeleteTaskButton, i) => {
+    openDeleteTaskButton?.removeEventListener("click", () => {
+      DeleteTaskModalList[i].showModal();
+    });
+  });
+
+  closeDeleteTaskButtonList.forEach((closeDeleteTaskButton, i) => {
+    closeDeleteTaskButton?.removeEventListener("click", () => {
+      DeleteTaskModalList[i].close();
+    });
+  });
+
+  confirmedDeleteTaskList.forEach((confirmedDeleteTask, i) => {
+    confirmedDeleteTask?.removeEventListener("click", () => {
+      deleteTask(confirmedDeleteTask);
+
+      DeleteTaskModalList[i].close();
+    });
+  });
+}
+
+addDeleteEventListeners();
+
+const mutationObserver = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.target.nodeName === "SECTION") {
+      removeDeleteEventListeners();
+      addDeleteEventListeners();
+    }
+  });
+});
+
+mutationObserver.observe(document.getElementById("feed"), {
+  attributes: true,
+  childList: true,
 });

@@ -24,31 +24,36 @@
         </div>
 
         <dialog data-modal>
-          <form method="dialog">
+          <form id="form-task" method="dialog">
             <div class="form-header">Create Task</div>
 
             <div class="form-content flex-col">
               <div class="form-content-field flex-col">
                 <label>Title:</label>
-                <input type="text" id="task-title" />
+                <input type="text" id="task-title" maxlength="17" required />
+                <span>(max characters is 17)</span>
               </div>
 
               <div class="form-content-field flex-col">
                 <label>Description:</label>
-                <input type="text" id="task-description" />
+                <input type="text" id="task-description" maxlength="48" />
+                <span>(max characters is 48)</span>
               </div>
 
               <div class="form-content-field flex-col">
                 <label>Due Date:</label>
                 <input
-                  type="datetime-local"
+                  type="date"
                   id="task-due-date"
-                  class="pointer" />
+                  class="pointer"
+                  required />
               </div>
 
               <div class="form-content-field-options flex-col">
                 <label>Priority:</label>
-                <select id="task-priority" class="pointer">
+                <select id="task-priority" class="pointer" required>
+                  <option value="" selected disabled hidden>Priority</option>
+
                   <option value="high">High</option>
                   <option value="medium">Medium</option>
                   <option value="low">Low</option>
@@ -57,7 +62,7 @@
             </div>
 
             <div class="form-footer">
-              <button close-data-modal type="submit">Close</button>
+              <button close-data-modal type="reset">Close</button>
 
               <button type="submit">Submit</button>
             </div>

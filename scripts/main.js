@@ -34,7 +34,6 @@ if (typeof Storage !== "undefined") {
 }
 
 // show-hide input text
-
 const openButton = document.querySelector("[open-data-modal]");
 const closeButton = document.querySelector("[close-data-modal]");
 const modal = document.querySelector("[data-modal]");
@@ -48,7 +47,6 @@ closeButton.addEventListener("click", () => {
 });
 
 // get submit and handle submit task
-
 const submitButton = document.getElementById("form-task");
 
 submitButton.addEventListener("submit", (e) => {

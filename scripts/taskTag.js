@@ -21,7 +21,9 @@ export const getFormat = (id, title, description, dueDate, priority) => {
   
         <span>${dueDate}</span>
   
-        <button class="task-head-actions-btn center bg-green">
+        <button
+        complete-task="${id}"
+        class="task-head-actions-btn center bg-green">
           <img src="./public/check.svg" alt="check icon" />
         </button>
   

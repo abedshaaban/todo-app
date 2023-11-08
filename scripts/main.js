@@ -1,7 +1,8 @@
 import {
+  SaveTaskToLocalStorage,
+  addCompleteTaskEventListeners,
   addDeleteEventListeners,
   removeDeleteEventListeners,
-  SaveTaskToLocalStorage,
 } from "./utilities.js";
 import { getFormat } from "./taskTag.js";
 
@@ -76,6 +77,7 @@ submitButton.addEventListener("submit", (e) => {
   modal.close();
 });
 
+addCompleteTaskEventListeners();
 addDeleteEventListeners();
 
 const mutationObserver = new MutationObserver((mutations) => {

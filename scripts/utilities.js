@@ -18,6 +18,19 @@ function deleteTask(confirmedDeleteTask) {
   localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
 }
 
+export function addCompleteTaskEventListeners() {
+  const openCheckTaskButtonList = document.querySelectorAll("[complete-task]");
+
+  openCheckTaskButtonList.forEach((openCheckTaskButton) => {
+    const completeID = openCheckTaskButton.getAttribute("complete-task");
+    const taskDiv = document.getElementById(completeID);
+
+    openCheckTaskButton.addEventListener("click", () => {
+      taskDiv.classList.toggle("task-done");
+    });
+  });
+}
+
 export function addDeleteEventListeners() {
   const openDeleteTaskButtonList = document.querySelectorAll(
     "[open-delete-confirmation-modal]"

@@ -80,7 +80,7 @@
   align-items: center;
 }
 
-.form-footer button {
+.form-footer-button {
   border-radius: 8px;
   font-size: 15px;
   font-weight: 500;
@@ -91,11 +91,11 @@
   transition-duration: 0.3s;
 }
 
-.form-footer button:hover {
+.form-footer-button:hover {
   opacity: 0.7;
 }
 
-.form-footer button:nth-child(2) {
+.form-footer-button-action {
   color: var(--primary-white);
   background-color: var(--primary);
 }

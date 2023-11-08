@@ -27,9 +27,41 @@ function getFormat(id, title, description, dueDate, priority) {
         <img src="./public/check.svg" alt="check icon" />
       </button>
 
-      <button class="task-head-actions-btn center bg-red">
-        <img src="./public/trash.svg" alt="trash icon" />
-      </button>
+      <button
+      open-delete-confirmation-modal
+      class="task-head-actions-btn center bg-red">
+      <img src="./public/trash.svg" alt="trash icon" />
+    </button>
+
+      <dialog delete-confirmation-modal>
+        <form id="form-task" method="dialog">
+          <div class="form-header">Delete Task</div>
+
+          <div class="form-content flex-col">
+            <div style="text-wrap: wrap">
+              Deleting this post is not reversable. Once the task is
+              deleted, it is gone for ever.
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <button
+              close-delete-confirmation-modal
+              type="reset"
+              class="form-footer-button">
+              Close
+            </button>
+
+            <button
+              confirmed-delete-task
+              task-parent="${id}"
+              type="button"
+              class="form-footer-button bg-red">
+              Delete
+            </button>
+          </div>
+        </form>
+      </dialog>
     </div>
   </div>
 
@@ -47,7 +79,7 @@ if (typeof Storage !== "undefined") {
   const feed = document.getElementById("feed");
 
   if (savedTasks == null) {
-    feed.innerHTML = "<p>you don't have any tasks</p>";
+    // feed.innerHTML = "<p>you don't have any tasks</p>";
   } else {
     feed.innerHTML = "";
 
@@ -139,4 +171,37 @@ function SaveTaskToLocalStorage(title, description, dueDate, priority) {
       newTask?.dueDate,
       newTask?.priority
     ) + feed.innerHTML;
+
+  location.reload();
 }
+
+// delete task
+
+// show-hide input text
+
+const openDeleteTaskButton = document.querySelector(
+  "[open-delete-confirmation-modal]"
+);
+const closeDeleteTaskButton = document.querySelector(
+  "[close-delete-confirmation-modal]"
+);
+const DeleteTaskModal = document.querySelector("[delete-confirmation-modal]");
+const confirmedDeleteTask = document.querySelector("[confirmed-delete-task]");
+
+openDeleteTaskButton?.addEventListener("click", () => {
+  DeleteTaskModal.showModal();
+});
+
+closeDeleteTaskButton?.addEventListener("click", () => {
+  DeleteTaskModal.close();
+});
+
+confirmedDeleteTask?.addEventListener("click", () => {
+  const taskID = confirmedDeleteTask.getAttribute("task-parent");
+  const taskToBeRemoved = document.getElementById(taskID);
+
+  console.log(taskID);
+  taskToBeRemoved.setAttribute("class", "is-removed");
+
+  DeleteTaskModal.close();
+});

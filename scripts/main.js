@@ -29,12 +29,12 @@ submitButton.addEventListener("submit", (e) => {
   let taskDueDateValue = taskDueDate.value;
   let taskPriorityValue = taskPriority.value;
 
-  console.table({
-    taskTitle: taskTitleValue,
-    taskDescription: taskDescriptionValue,
-    taskDueDate: taskDueDateValue,
-    taskPriority: taskPriorityValue,
-  });
+  SaveTaskToLocalStorage(
+    taskTitleValue,
+    taskDescriptionValue,
+    taskDueDateValue,
+    taskPriorityValue
+  );
 
   taskTitle.value = "";
   taskDescription.value = "";
@@ -43,3 +43,23 @@ submitButton.addEventListener("submit", (e) => {
 
   modal.close();
 });
+
+function SaveTaskToLocalStorage(name, description, dueDate, priority) {
+  if (typeof Storage === "undefined") return;
+
+  const oldTasks = JSON.parse(localStorage.getItem("tasks-list"));
+
+  const newTask = {
+    title: name,
+    description: description,
+    dueDate: dueDate,
+    priority: priority,
+    isCompleted: false,
+  };
+
+  if (oldTasks != null) {
+    localStorage.setItem("tasks-list", JSON.stringify([newTask, ...oldTasks]));
+  } else {
+    localStorage.setItem("tasks-list", JSON.stringify([newTask]));
+  }
+}

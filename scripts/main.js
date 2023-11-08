@@ -25,7 +25,8 @@ if (typeof Storage !== "undefined") {
         task?.title,
         task?.description,
         task?.dueDate,
-        task?.priority
+        task?.priority,
+        task?.isCompleted
       );
     }
   }

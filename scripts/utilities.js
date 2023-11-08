@@ -142,6 +142,7 @@ export function SaveTaskToLocalStorage(title, description, dueDate, priority) {
       newTask?.title,
       newTask?.description,
       newTask?.dueDate,
-      newTask?.priority
+      newTask?.priority,
+      newTask?.isCompleted
     ) + feed.innerHTML;
 }

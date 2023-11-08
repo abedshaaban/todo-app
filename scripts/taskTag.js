@@ -1,5 +1,14 @@
-export const getFormat = (id, title, description, dueDate, priority) => {
-  return `<div id="${id}" class="task flex-row">
+export const getFormat = (
+  id,
+  title,
+  description,
+  dueDate,
+  priority,
+  isCompleted
+) => {
+  return `<div id="${id}" class="task flex-row ${
+    isCompleted ? "task-done" : ""
+  }">
   <div class="drag-task-handler center pointer">
     <img src="./public/drag-handle-dots.svg" alt="" />
   </div>

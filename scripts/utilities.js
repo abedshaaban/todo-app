@@ -19,6 +19,7 @@ function deleteTask(confirmedDeleteTask) {
 }
 
 export function addCompleteTaskEventListeners() {
+  const tasksList = JSON.parse(localStorage.getItem("tasks-list"));
   const openCheckTaskButtonList = document.querySelectorAll("[complete-task]");
 
   openCheckTaskButtonList.forEach((openCheckTaskButton) => {
@@ -27,6 +28,20 @@ export function addCompleteTaskEventListeners() {
 
     openCheckTaskButton.addEventListener("click", () => {
       taskDiv.classList.toggle("task-done");
+
+      let newTaskList = [];
+      for (let i = 0; i < tasksList.length; i++) {
+        if (tasksList[i].id == completeID) {
+          newTaskList.push({
+            ...tasksList[i],
+            isCompleted: taskDiv.classList.contains("task-done"),
+          });
+        } else {
+          newTaskList.push(oldTasks[i]);
+        }
+      }
+
+      localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
     });
   });
 }

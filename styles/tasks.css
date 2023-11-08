@@ -94,3 +94,100 @@
   color: var(--primary-white);
   background-color: var(--primary);
 }
+
+/* tasks feed */
+.tasks-feed {
+  align-items: center;
+}
+
+.task {
+  width: 100%;
+  height: 64px;
+  max-width: 400px;
+  padding: 9px 9px 9px 0;
+  border-radius: 8px;
+  border: 1px solid black;
+}
+
+.drag-task-handler {
+  padding: 6px 6px 6px 9px;
+  transition-duration: 0.12s;
+}
+.drag-task-handler:hover {
+  opacity: 0.7;
+}
+
+.task-content {
+  width: 100%;
+}
+
+.task-head {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-head > h2 {
+  font-size: 18px;
+}
+
+.task-head-actions {
+  width: fit-content;
+  text-wrap: nowrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.task-head-actions-priority {
+  padding-right: 5px;
+  border-right: 1px solid gray;
+}
+
+.task-head-actions-priority::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #000;
+  display: inline-block;
+  border-radius: 9999px;
+  margin-right: 5px;
+}
+
+.priority-high::before {
+  background: rgba(255, 0, 0, 0.8);
+}
+
+.priority-medium::before {
+  background: rgba(255, 255, 0, 0.8);
+}
+
+.priority-low::before {
+  background: rgba(0, 255, 0, 0.8);
+}
+
+.task-head-actions-btn {
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.bg-red {
+  background-color: rgba(255, 0, 0, 0.3);
+  transition-duration: 0.3s;
+}
+
+.bg-green {
+  background-color: rgba(0, 255, 0, 0.3);
+  transition-duration: 0.3s;
+}
+
+.bg-red:hover {
+  background-color: rgba(255, 0, 0, 0.6);
+}
+
+.bg-green:hover {
+  background-color: rgba(0, 255, 0, 0.6);
+}
+
+.task-description {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}

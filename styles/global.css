@@ -44,6 +44,12 @@ button {
   flex-direction: row;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pointer {
   cursor: pointer;
 }

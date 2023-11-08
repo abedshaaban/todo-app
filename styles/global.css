@@ -29,3 +29,12 @@ dialog {
   margin: auto;
   border-radius: 9px;
 }
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.pointer {
+  cursor: pointer;
+}

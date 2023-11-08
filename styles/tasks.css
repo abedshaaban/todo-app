@@ -109,8 +109,8 @@
 
 .task {
   width: 100%;
-  height: 64px;
-  max-width: 400px;
+  height: 90px;
+  max-width: 500px;
   padding: 9px 9px 9px 0;
   border-radius: 8px;
   border: 1px solid black;
@@ -172,8 +172,12 @@
 }
 
 .task-head-actions-btn {
-  padding: 6px;
+  padding: 4px;
   border-radius: 6px;
+}
+
+.task-head-actions-btn > img {
+  width: 20px;
 }
 
 .bg-red {

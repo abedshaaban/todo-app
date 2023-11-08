@@ -1,8 +1,48 @@
+// task format
+
+function getFormat(id, title, description, dueDate, priority) {
+  return `<div id="${id}" class="task flex-row">
+<div class="drag-task-handler center pointer">
+  <img src="./public/drag-handle-dots.svg" alt="" />
+</div>
+
+<div class="task-content flex-col">
+  <div class="task-head flex-row">
+    <h2>${title}</h2>
+
+    <div class="task-head-actions flex-row">
+      <span class="task-head-actions-priority ${
+        priority == "High"
+          ? "priority-high"
+          : priority == "Medium"
+          ? "priority-medium"
+          : "priority-low"
+      }">
+      ${priority}
+      </span>
+
+      <span>${dueDate}</span>
+
+      <button class="task-head-actions-btn center bg-green">
+        <img src="./public/check.svg" alt="check icon" />
+      </button>
+
+      <button class="task-head-actions-btn center bg-red">
+        <img src="./public/trash.svg" alt="trash icon" />
+      </button>
+    </div>
+  </div>
+
+  <div class="task-description">
+    <p>${description}</p>
+  </div>
+</div>
+</div>`;
+}
+
 // load tasks from local storage
 if (typeof Storage !== "undefined") {
   const savedTasks = JSON.parse(localStorage.getItem("tasks-list"));
-
-  console.log(savedTasks);
 
   const feed = document.getElementById("feed");
 
@@ -14,43 +54,13 @@ if (typeof Storage !== "undefined") {
     for (let i = 0; i < savedTasks.length; i++) {
       const task = savedTasks[i];
 
-      feed.innerHTML += `<div id="${task?.id}" class="task flex-row">
-    <div class="drag-task-handler center pointer">
-      <img src="./public/drag-handle-dots.svg" alt="" />
-    </div>
-
-    <div class="task-content flex-col">
-      <div class="task-head flex-row">
-        <h2>${task?.title}</h2>
-
-        <div class="task-head-actions flex-row">
-          <span class="task-head-actions-priority ${
-            task?.priority == "High"
-              ? "priority-high"
-              : task?.priority == "Medium"
-              ? "priority-medium"
-              : "priority-low"
-          }">
-          ${task?.priority}
-          </span>
-
-          <span>${task?.dueDate}</span>
-
-          <button class="task-head-actions-btn center bg-green">
-            <img src="./public/check.svg" alt="check icon" />
-          </button>
-
-          <button class="task-head-actions-btn center bg-red">
-            <img src="./public/trash.svg" alt="trash icon" />
-          </button>
-        </div>
-      </div>
-
-      <div class="task-description">
-        <p>${task?.description}</p>
-      </div>
-    </div>
-  </div>`;
+      feed.innerHTML += getFormat(
+        task?.id,
+        task?.title,
+        task?.description,
+        task?.dueDate,
+        task?.priority
+      );
     }
   }
 }
@@ -101,14 +111,14 @@ submitButton.addEventListener("submit", (e) => {
   modal.close();
 });
 
-function SaveTaskToLocalStorage(name, description, dueDate, priority) {
+function SaveTaskToLocalStorage(title, description, dueDate, priority) {
   if (typeof Storage === "undefined") return;
 
   const oldTasks = JSON.parse(localStorage.getItem("tasks-list"));
 
   const newTask = {
     id: new Date().valueOf(),
-    title: name,
+    title: title,
     description: description,
     dueDate: dueDate,
     priority: priority,
@@ -120,4 +130,13 @@ function SaveTaskToLocalStorage(name, description, dueDate, priority) {
   } else {
     localStorage.setItem("tasks-list", JSON.stringify([newTask]));
   }
+
+  feed.innerHTML =
+    getFormat(
+      newTask?.id,
+      newTask?.title,
+      newTask?.description,
+      newTask?.dueDate,
+      newTask?.priority
+    ) + feed.innerHTML;
 }

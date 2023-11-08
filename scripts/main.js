@@ -201,7 +201,6 @@ confirmedDeleteTask?.addEventListener("click", () => {
   const taskToBeRemoved = document.getElementById(taskID);
   const oldTasks = JSON.parse(localStorage.getItem("tasks-list"));
 
-  console.log(taskID);
   taskToBeRemoved.setAttribute("class", "is-removed");
 
   let newTaskList = [];
@@ -211,7 +210,6 @@ confirmedDeleteTask?.addEventListener("click", () => {
       newTaskList.push(oldTasks[i]);
     }
   }
-  console.log(newTaskList);
 
   localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
 

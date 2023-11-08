@@ -79,7 +79,7 @@ if (typeof Storage !== "undefined") {
   const feed = document.getElementById("feed");
 
   if (savedTasks == null) {
-    // feed.innerHTML = "<p>you don't have any tasks</p>";
+    feed.innerHTML = "<p>you don't have any tasks</p>";
   } else {
     feed.innerHTML = "";
 
@@ -199,9 +199,21 @@ closeDeleteTaskButton?.addEventListener("click", () => {
 confirmedDeleteTask?.addEventListener("click", () => {
   const taskID = confirmedDeleteTask.getAttribute("task-parent");
   const taskToBeRemoved = document.getElementById(taskID);
+  const oldTasks = JSON.parse(localStorage.getItem("tasks-list"));
 
   console.log(taskID);
   taskToBeRemoved.setAttribute("class", "is-removed");
+
+  let newTaskList = [];
+
+  for (let i = 0; i < oldTasks.length; i++) {
+    if (oldTasks[i].id != taskID) {
+      newTaskList.push(oldTasks[i]);
+    }
+  }
+  console.log(newTaskList);
+
+  localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
 
   DeleteTaskModal.close();
 });

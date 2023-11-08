@@ -63,6 +63,11 @@
   border: 1px solid gray;
   margin-left: 3px;
 }
+.text-sm {
+  font-size: 12px;
+  margin-left: 3px;
+  color: rgba(0, 0, 0, 0.6);
+}
 
 .form-content-field-options {
   max-width: 100px;
@@ -97,7 +102,9 @@
 
 /* tasks feed */
 .tasks-feed {
+  padding: 10px;
   align-items: center;
+  gap: 15px;
 }
 
 .task {

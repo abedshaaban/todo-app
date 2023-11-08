@@ -37,7 +37,7 @@ export function addCompleteTaskEventListeners() {
             isCompleted: taskDiv.classList.contains("task-done"),
           });
         } else {
-          newTaskList.push(oldTasks[i]);
+          newTaskList.push(tasksList[i]);
         }
       }
 

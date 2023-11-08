@@ -1,3 +1,10 @@
+// load tasks from local storage
+if (typeof Storage !== "undefined") {
+  const savedTasks = JSON.parse(localStorage.getItem("tasks-list"));
+
+  console.log(savedTasks);
+}
+
 // show-hide input text
 
 const openButton = document.querySelector("[open-data-modal]");

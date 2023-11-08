@@ -2,6 +2,7 @@ import {
   SaveTaskToLocalStorage,
   addCompleteTaskEventListeners,
   addDeleteEventListeners,
+  removeCompleteTaskEventListeners,
   removeDeleteEventListeners,
 } from "./utilities.js";
 import { getFormat } from "./taskTag.js";
@@ -84,7 +85,9 @@ addDeleteEventListeners();
 const mutationObserver = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     if (mutation.target.nodeName === "SECTION") {
+      removeCompleteTaskEventListeners();
       removeDeleteEventListeners();
+      addCompleteTaskEventListeners();
       addDeleteEventListeners();
     }
   });

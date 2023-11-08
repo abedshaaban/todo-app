@@ -45,6 +45,18 @@ export function addCompleteTaskEventListeners() {
     });
   });
 }
+export function removeCompleteTaskEventListeners() {
+  const openCheckTaskButtonList = document.querySelectorAll("[complete-task]");
+
+  openCheckTaskButtonList.forEach((openCheckTaskButton) => {
+    const completeID = openCheckTaskButton.getAttribute("complete-task");
+    const taskDiv = document.getElementById(completeID);
+
+    openCheckTaskButton.removeEventListener("click", () => {
+      taskDiv.classList.toggle("task-done");
+    });
+  });
+}
 
 export function addDeleteEventListeners() {
   const openDeleteTaskButtonList = document.querySelectorAll(

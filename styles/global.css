@@ -30,6 +30,10 @@ dialog {
   border-radius: 9px;
 }
 
+button {
+  cursor: pointer;
+}
+
 .flex-col {
   display: flex;
   flex-direction: column;

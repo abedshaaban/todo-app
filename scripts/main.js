@@ -6,10 +6,15 @@ if (typeof Storage !== "undefined") {
 
   const feed = document.getElementById("feed");
 
-  for (let i = 0; i < savedTasks.length; i++) {
-    const task = savedTasks[i];
+  if (savedTasks == null) {
+    feed.innerHTML = "<p>you don't have any tasks</p>";
+  } else {
+    feed.innerHTML = "";
 
-    feed.innerHTML += `<div class="task flex-row">
+    for (let i = 0; i < savedTasks.length; i++) {
+      const task = savedTasks[i];
+
+      feed.innerHTML += `<div id="${task?.id}" class="task flex-row">
     <div class="drag-task-handler center pointer">
       <img src="./public/drag-handle-dots.svg" alt="" />
     </div>
@@ -46,6 +51,7 @@ if (typeof Storage !== "undefined") {
       </div>
     </div>
   </div>`;
+    }
   }
 }
 
@@ -101,6 +107,7 @@ function SaveTaskToLocalStorage(name, description, dueDate, priority) {
   const oldTasks = JSON.parse(localStorage.getItem("tasks-list"));
 
   const newTask = {
+    id: new Date().valueOf(),
     title: name,
     description: description,
     dueDate: dueDate,

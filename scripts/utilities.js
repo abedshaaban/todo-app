@@ -154,7 +154,6 @@ export function removeEditEventListeners() {
 
   confirmedEditTaskList.forEach((confirmedEditTask, i) => {
     confirmedEditTask?.removeEventListener("click", () => {
-      // saveEditTask(confirmedEditTask);
       console.log("save");
 
       EditTaskModalList[i].close();
@@ -186,7 +185,31 @@ export function addEditEventListeners() {
 
   confirmedEditTaskList.forEach((confirmedEditTask, i) => {
     confirmedEditTask?.addEventListener("click", () => {
-      // saveEditTask(confirmedEditTask);
+      const taskID = confirmedEditTask.getAttribute("task-parent");
+
+      const taskTitle = document.getElementById("edit-task-title-" + taskID);
+      const taskDescription = document.getElementById(
+        "edit-task-description-" + taskID
+      );
+      const taskDueDate = document.getElementById(
+        "edit-task-due-date-" + taskID
+      );
+      const taskPriority = document.getElementById(
+        "edit-task-priority-" + taskID
+      );
+
+      let taskTitleValue = taskTitle.value;
+      let taskDescriptionValue = taskDescription.value;
+      let taskDueDateValue = taskDueDate.value;
+      let taskPriorityValue = taskPriority.value;
+
+      console.log(
+        taskTitleValue,
+        taskDescriptionValue,
+        taskDueDateValue,
+        taskPriorityValue
+      );
+
       console.log("save");
 
       EditTaskModalList[i].close();

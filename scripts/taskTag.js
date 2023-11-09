@@ -88,7 +88,7 @@ export const getFormat = (
               <label>Title:</label>
               <input
                 type="text"
-                id="task-title"
+                id="edit-task-title-${id}"
                 maxlength="17"
                 required
                 value="${title}" />
@@ -98,9 +98,8 @@ export const getFormat = (
             <div class="form-content-field flex-col">
               <label>Description:</label>
               <input
-                name="fake-input-description"
                 type="text"
-                id="task-description"
+                id="edit-task-description-${id}"
                 maxlength="250"
                 value="${description}" />
               <span class="text-sm">(max characters is 250)</span>
@@ -109,9 +108,8 @@ export const getFormat = (
             <div class="form-content-field flex-col">
               <label>Due Date:</label>
               <input
-                name="fake-input-due-date"
                 type="date"
-                id="task-due-date"
+                id="edit-task-due-date-${id}"
                 class="pointer"
                 required
                 value="${dueDate}" />
@@ -119,7 +117,7 @@ export const getFormat = (
 
             <div class="form-content-field-options flex-col">
               <label>Priority:</label>
-              <select id="task-priority" class="pointer" required>
+              <select id="edit-task-priority-${id}" class="pointer" required>
                 <option value="" selected disabled hidden>
                   Priority
                 </option>

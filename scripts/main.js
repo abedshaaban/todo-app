@@ -7,7 +7,6 @@ import {
   addEditEventListeners,
   removeEditEventListeners,
   addEventListenerToDragAndDropTasks,
-  removeEventListenerToDragAndDropTasks,
 } from "./utilities.js";
 import { getFormat } from "./taskTag.js";
 

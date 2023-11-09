@@ -315,34 +315,3 @@ export function addEventListenerToDragAndDropTasks() {
   feed.addEventListener("dragover", sortableFeed);
   feed.addEventListener("dragenter", (e) => e.preventDefault());
 }
-
-export function removeEventListenerToDragAndDropTasks() {
-  const feed = document.getElementById("feed");
-  const taskList = feed.querySelectorAll(".task");
-
-  taskList.forEach((task) => {
-    task.removeEventListener("dragstart", () => {
-      setTimeout(() => task.classList.add("task-dragging"), 0);
-    });
-
-    task.removeEventListener("dragend", () =>
-      task.classList.remove("task-dragging")
-    );
-  });
-
-  const sortableFeed = (e) => {
-    e.preventDefault();
-    const draggingTask = document.querySelector(".task-dragging");
-    // Getting all items except currently dragging and making array of them
-    let siblings = [...feed.querySelectorAll(".task:not(.task-dragging)")];
-    // Finding the sibling after which the dragging item should be placed
-    let nextTask = siblings.find((sibling) => {
-      return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
-    });
-    // Inserting the dragging item before the found sibling
-    feed.insertBefore(draggingTask, nextTask);
-  };
-
-  feed.removeEventListener("dragover", sortableFeed);
-  feed.removeEventListener("dragenter", (e) => e.preventDefault());
-}

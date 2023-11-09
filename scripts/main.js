@@ -117,15 +117,61 @@ searchInput.addEventListener("input", () => {
 });
 
 // chips filter
+const feed = document.getElementById("feed");
 const priorityTag = document.getElementById("filter-by-priority");
-const dueDateTag = document.getElementById("filter-by-due-date");
 
 priorityTag.addEventListener("click", () => {
-  priorityTag.classList.toggle("filter-active-button");
-});
+  if (priorityTag.classList.contains("filter-active-button")) {
+    priorityTag.classList.toggle("filter-active-button");
+    location.reload();
+  } else {
+    priorityTag.classList.toggle("filter-active-button");
+    const savedTasks = JSON.parse(localStorage.getItem("tasks-list"));
 
-dueDateTag.addEventListener("click", () => {
-  dueDateTag.classList.toggle("filter-active-button");
+    feed.innerHTML = "";
+
+    for (let i = 0; i < savedTasks.length; i++) {
+      const task = savedTasks[i];
+      if (task.priority == "High") {
+        feed.innerHTML += getFormat(
+          task.id,
+          task.title,
+          task.description,
+          task.dueDate,
+          task.priority,
+          task.isCompleted
+        );
+      }
+    }
+
+    for (let i = 0; i < savedTasks.length; i++) {
+      const task = savedTasks[i];
+      if (task.priority == "Medium") {
+        feed.innerHTML += getFormat(
+          task.id,
+          task.title,
+          task.description,
+          task.dueDate,
+          task.priority,
+          task.isCompleted
+        );
+      }
+    }
+
+    for (let i = 0; i < savedTasks.length; i++) {
+      const task = savedTasks[i];
+      if (task.priority == "Low") {
+        feed.innerHTML += getFormat(
+          task.id,
+          task.title,
+          task.description,
+          task.dueDate,
+          task.priority,
+          task.isCompleted
+        );
+      }
+    }
+  }
 });
 
 // check for task creation and rerun event listeners

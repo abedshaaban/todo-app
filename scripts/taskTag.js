@@ -18,7 +18,7 @@ export const getFormat = (
       <h2>${title}</h2>
   
       <div class="task-head-actions flex-row">
-        <span class="task-head-actions-priority ${
+        <span id="priority-label" class="task-head-actions-priority ${
           priority == "High"
             ? "priority-high"
             : priority == "Medium"
@@ -28,7 +28,7 @@ export const getFormat = (
         ${priority}
         </span>
   
-        <span>${dueDate}</span>
+        <span id="due-date-label">${dueDate}</span>
   
         <button
         edit-parent="${id}"

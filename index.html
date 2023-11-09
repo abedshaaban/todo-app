@@ -105,13 +105,11 @@
       <section class="filter-section flex-row">
         <div class="filter-section-div flex-row">
           <button id="filter-by-priority">Priority</button>
-
-          <button id="filter-by-due-date">date</button>
         </div>
       </section>
 
       <section id="feed" class="tasks-feed flex-col">
-        <!-- <div id="123" class="task flex-row" draggable="true">
+        <div id="123" class="task flex-row" draggable="true">
           <div class="drag-task-handler center grab">
             <img src="./public/drag-handle-dots.svg" alt="" />
           </div>
@@ -121,11 +119,13 @@
               <h2>Finish Task App</h2>
 
               <div class="task-head-actions flex-row">
-                <span class="task-head-actions-priority priority-high">
+                <span
+                  id="priority-label"
+                  class="task-head-actions-priority priority-high">
                   High
                 </span>
 
-                <span>Due Date</span>
+                <span id="due-date-label">Due Date</span>
 
                 <button
                   edit-parent="123"
@@ -265,7 +265,7 @@
           <div class="mark-as-done">
             <img src="./public/done.png" alt="done" />
           </div>
-        </div> -->
+        </div>
       </section>
     </main>
   </body>

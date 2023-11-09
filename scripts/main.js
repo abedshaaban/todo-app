@@ -116,6 +116,18 @@ searchInput.addEventListener("input", () => {
   });
 });
 
+// chips filter
+const priorityTag = document.getElementById("filter-by-priority");
+const dueDateTag = document.getElementById("filter-by-due-date");
+
+priorityTag.addEventListener("click", () => {
+  priorityTag.classList.toggle("filter-active-button");
+});
+
+dueDateTag.addEventListener("click", () => {
+  dueDateTag.classList.toggle("filter-active-button");
+});
+
 // check for task creation and rerun event listeners
 const mutationObserver = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {

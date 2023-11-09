@@ -46,6 +46,35 @@
   outline: none;
 }
 
+/* filter tags */
+
+.filter-section {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-section-div {
+  width: 100%;
+  max-width: 500px;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-section-div button {
+  padding: 3px 9px;
+  font-size: 15px;
+  background-color: var(--tertiary);
+  color: black;
+  border-radius: 999px;
+}
+
+.filter-active-button {
+  color: white !important;
+  background-color: var(--primary) !important;
+}
+
 /* dialog components */
 
 .form-header {

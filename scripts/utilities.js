@@ -129,6 +129,72 @@ export function removeDeleteEventListeners() {
     });
   });
 }
+export function addEditEventListeners() {
+  const openEditTaskButtonList = document.querySelectorAll(
+    "[open-edit-task-modal]"
+  );
+  const closeEditTaskButtonList = document.querySelectorAll(
+    "[close-edit-task-modal]"
+  );
+  const EditTaskModalList = document.querySelectorAll("[show-edit-task-modal]");
+  const confirmedEditTaskList = document.querySelectorAll("[edit-task]");
+
+  openEditTaskButtonList.forEach((openEditTaskButton, i) => {
+    openEditTaskButton?.addEventListener("click", () => {
+      EditTaskModalList[i].showModal();
+    });
+  });
+
+  closeEditTaskButtonList.forEach((closeEditTaskButton, i) => {
+    closeEditTaskButton?.addEventListener("click", () => {
+      EditTaskModalList[i].close();
+    });
+  });
+
+  confirmedEditTaskList.forEach((confirmedEditTask, i) => {
+    confirmedEditTask?.addEventListener("click", () => {
+      // saveEditTask(confirmedEditTask);
+      console.log("save");
+
+      EditTaskModalList[i].close();
+    });
+  });
+}
+
+export function removeEditEventListeners() {
+  const openDeleteTaskButtonList = document.querySelectorAll(
+    "[open-delete-confirmation-modal]"
+  );
+  const closeDeleteTaskButtonList = document.querySelectorAll(
+    "[close-delete-confirmation-modal]"
+  );
+  const DeleteTaskModalList = document.querySelectorAll(
+    "[delete-confirmation-modal]"
+  );
+  const confirmedDeleteTaskList = document.querySelectorAll(
+    "[confirmed-delete-task]"
+  );
+
+  openDeleteTaskButtonList.forEach((openDeleteTaskButton, i) => {
+    openDeleteTaskButton?.removeEventListener("click", () => {
+      DeleteTaskModalList[i].showModal();
+    });
+  });
+
+  closeDeleteTaskButtonList.forEach((closeDeleteTaskButton, i) => {
+    closeDeleteTaskButton?.removeEventListener("click", () => {
+      DeleteTaskModalList[i].close();
+    });
+  });
+
+  confirmedDeleteTaskList.forEach((confirmedDeleteTask, i) => {
+    confirmedDeleteTask?.removeEventListener("click", () => {
+      deleteTask(confirmedDeleteTask);
+
+      DeleteTaskModalList[i].close();
+    });
+  });
+}
 
 export function SaveTaskToLocalStorage(title, description, dueDate, priority) {
   if (typeof Storage === "undefined") return;

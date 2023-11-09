@@ -4,6 +4,8 @@ import {
   addDeleteEventListeners,
   removeCompleteTaskEventListeners,
   removeDeleteEventListeners,
+  addEditEventListeners,
+  removeEditEventListeners,
 } from "./utilities.js";
 import { getFormat } from "./taskTag.js";
 
@@ -79,14 +81,17 @@ submitButton.addEventListener("submit", (e) => {
 
 addCompleteTaskEventListeners();
 addDeleteEventListeners();
+addEditEventListeners();
 
 const mutationObserver = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     if (mutation.target.nodeName === "SECTION") {
       removeCompleteTaskEventListeners();
       removeDeleteEventListeners();
+      removeEditEventListeners();
       addCompleteTaskEventListeners();
       addDeleteEventListeners();
+      addEditEventListeners();
     }
   });
 });

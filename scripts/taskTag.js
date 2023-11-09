@@ -31,6 +31,13 @@ export const getFormat = (
         <span>${dueDate}</span>
   
         <button
+        edit-parent="123"
+        open-edit-task-modal
+        class="task-head-actions-btn center bg-gray">
+          <img src="./public/edit.svg" alt="edit icon" />
+        </button>
+
+        <button
         complete-task="${id}"
         class="task-head-actions-btn center bg-green">
           <img src="./public/check.svg" alt="check icon" />
@@ -67,6 +74,31 @@ export const getFormat = (
                 type="button"
                 class="form-footer-button bg-red">
                 Delete
+              </button>
+            </div>
+          </form>
+        </dialog>
+
+        <dialog show-edit-task-modal>
+          <form id="form-task-edit" method="dialog">
+            <div class="form-header">Edit Task</div>
+
+            <div id="form-task-edit-content" class="form-content flex-col"></div>
+
+            <div class="form-footer">
+              <button
+                close-edit-task-modal
+                type="reset"
+                class="form-footer-button">
+                Discard
+              </button>
+
+              <button
+                edit-task
+                task-parent="123"
+                type="button"
+                class="form-footer-button bg-red">
+                Save
               </button>
             </div>
           </form>

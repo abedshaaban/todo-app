@@ -9,25 +9,16 @@
 }
 
 :root {
-  /* --primary-white: #ffffff;
-  --secondary-white: #f1eaff;
-  --primary: #d0a2f7;
-  --secondary: #dcbfff;
-  --primary: #e5d4ff;
-  */
-
   --primary-white: #ffffff;
   --secondary-white: #f1eaff;
   --primary: #190482;
   --secondary: #7752fe;
   --tertiary: #e0f4ff;
   --quaternary: #c2d9ff;
-  /* --primary: #e5d4ff;
-  */
 }
 
 body {
-  background-color: var(--tertiary);
+  background-color: var(--quaternary);
 }
 
 a {

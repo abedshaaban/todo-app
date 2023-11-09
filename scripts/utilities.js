@@ -18,6 +18,33 @@ function deleteTask(confirmedDeleteTask) {
   localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
 }
 
+function editTask(id, title, description, dueDate, priority) {
+  const oldTasks = JSON.parse(localStorage.getItem("tasks-list"));
+  const taskDiv = document.getElementById(id);
+  const isCompleted = taskDiv.classList.contains("mark-as-done-active");
+
+  let newTaskList = [];
+
+  for (let i = 0; i < oldTasks.length; i++) {
+    if (oldTasks[i].id != id) {
+      newTaskList.push(oldTasks[i]);
+    } else {
+      newTaskList.push({
+        id: id,
+        title: title,
+        description: description,
+        dueDate: dueDate,
+        priority: priority,
+        isCompleted: isCompleted,
+      });
+    }
+  }
+
+  localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
+
+  location.reload();
+}
+
 export function addCompleteTaskEventListeners() {
   const tasksList = JSON.parse(localStorage.getItem("tasks-list"));
   const openCheckTaskButtonList = document.querySelectorAll("[complete-task]");
@@ -204,6 +231,14 @@ export function addEditEventListeners() {
       let taskPriorityValue = taskPriority.value;
 
       console.log(
+        taskTitleValue,
+        taskDescriptionValue,
+        taskDueDateValue,
+        taskPriorityValue
+      );
+
+      editTask(
+        taskID,
         taskTitleValue,
         taskDescriptionValue,
         taskDueDateValue,

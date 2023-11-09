@@ -7,7 +7,7 @@ export const getFormat = (
   isCompleted
 ) => {
   return `<div id="${id}" class="task flex-row ${
-    isCompleted ? "task-done" : ""
+    isCompleted ? "task-done mark-as-done-active" : ""
   }">
   <div class="drag-task-handler center pointer">
     <img src="./public/drag-handle-dots.svg" alt="" />
@@ -77,6 +77,10 @@ export const getFormat = (
     <div class="task-description">
       <p>${description}</p>
     </div>
+  </div>
+
+  <div class="mark-as-done">
+    <img src="./public/done.png" alt="done" />
   </div>
   </div>`;
 };

@@ -28,6 +28,7 @@ export function addCompleteTaskEventListeners() {
 
     openCheckTaskButton.addEventListener("click", () => {
       taskDiv.classList.toggle("task-done");
+      taskDiv.classList.toggle("mark-as-done-active");
 
       let newTaskList = [];
       for (let i = 0; i < tasksList.length; i++) {
@@ -45,6 +46,7 @@ export function addCompleteTaskEventListeners() {
     });
   });
 }
+
 export function removeCompleteTaskEventListeners() {
   const openCheckTaskButtonList = document.querySelectorAll("[complete-task]");
 

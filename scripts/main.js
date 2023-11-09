@@ -103,11 +103,17 @@ searchInput.addEventListener("input", () => {
   const targetedSearch = searchInput.value.toLowerCase();
   const tasksTitleList = document.querySelectorAll("h2");
   const tasksDescriptionList = document.querySelectorAll("p");
+  const tasksPriorityList = document.querySelectorAll("#priority-label");
+  const tasksDueDateList = document.querySelectorAll("#due-date-label");
 
   tasksTitleList.forEach((task, i) => {
     if (
       tasksTitleList[i].textContent.toLowerCase().includes(targetedSearch) ||
-      tasksDescriptionList[i].textContent.toLowerCase().includes(targetedSearch)
+      tasksDescriptionList[i].textContent
+        .toLowerCase()
+        .includes(targetedSearch) ||
+      tasksPriorityList[i].textContent.toLowerCase().includes(targetedSearch) ||
+      tasksDueDateList[i].textContent.toLowerCase().includes(targetedSearch)
     ) {
       task.parentNode.parentNode.parentNode.style.display = "";
     } else {

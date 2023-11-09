@@ -139,7 +139,7 @@ export const getFormat = (
               <button
                 close-edit-task-modal
                 type="reset"
-                class="form-footer-button">
+                class="form-footer-button bg-red">
                 Discard
               </button>
 
@@ -147,7 +147,7 @@ export const getFormat = (
                 edit-task
                 task-parent="${id}"
                 type="button"
-                class="form-footer-button bg-red">
+                class="form-footer-button bg-green">
                 Save
               </button>
             </div>

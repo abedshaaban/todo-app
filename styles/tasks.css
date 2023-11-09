@@ -126,6 +126,10 @@
   border: 1px solid black;
 }
 
+.task-dragging {
+  background-color: rgba(0, 120, 255, 0.1);
+}
+
 .drag-task-handler {
   padding: 6px 6px 6px 9px;
   transition-duration: 0.12s;

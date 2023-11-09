@@ -8,8 +8,8 @@ export const getFormat = (
 ) => {
   return `<div id="${id}" class="task flex-row ${
     isCompleted ? "task-done mark-as-done-active" : ""
-  }">
-  <div class="drag-task-handler center pointer">
+  }" draggable="true">
+  <div class="drag-task-handler center grab">
     <img src="./public/drag-handle-dots.svg" alt="" />
   </div>
   

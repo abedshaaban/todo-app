@@ -83,7 +83,59 @@ export const getFormat = (
           <form id="form-task-edit" method="dialog">
             <div class="form-header">Edit Task</div>
 
-            <div id="form-task-edit-content" class="form-content flex-col"></div>
+            <div id="form-task-edit-content" class="form-content flex-col">
+            <div class="form-content-field flex-col">
+              <label>Title:</label>
+              <input
+                type="text"
+                id="task-title"
+                maxlength="17"
+                required
+                value="${title}" />
+              <span class="text-sm">(max characters is 17)</span>
+            </div>
+
+            <div class="form-content-field flex-col">
+              <label>Description:</label>
+              <input
+                name="fake-input-description"
+                type="text"
+                id="task-description"
+                maxlength="250"
+                value="${description}" />
+              <span class="text-sm">(max characters is 250)</span>
+            </div>
+
+            <div class="form-content-field flex-col">
+              <label>Due Date:</label>
+              <input
+                name="fake-input-due-date"
+                type="date"
+                id="task-due-date"
+                class="pointer"
+                required
+                value="${dueDate}" />
+            </div>
+
+            <div class="form-content-field-options flex-col">
+              <label>Priority:</label>
+              <select id="task-priority" class="pointer" required>
+                <option value="" selected disabled hidden>
+                  Priority
+                </option>
+
+                <option ${
+                  priority === "High" ? "selected" : null
+                } value="High">High</option>
+                <option ${
+                  priority === "Medium" ? "selected" : null
+                } value="Medium">Medium</option>
+                <option ${
+                  priority === "Low" ? "selected" : null
+                } value="Low">Low</option>
+              </select>
+            </div>
+            </div>
 
             <div class="form-footer">
               <button

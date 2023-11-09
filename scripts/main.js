@@ -85,6 +85,17 @@ addEditEventListeners();
 
 // search bar events
 const searchInput = document.getElementById("search-bar-input");
+const searchClear = document.getElementById("clear-search-bar-cross-icon");
+
+searchClear.addEventListener("click", () => {
+  const tasksTitleList = document.querySelectorAll("h2");
+
+  searchInput.value = "";
+
+  tasksTitleList.forEach((task) => {
+    task.parentNode.parentNode.parentNode.style.display = "";
+  });
+});
 
 searchInput.addEventListener("input", () => {
   const targetedSearch = searchInput.value.toLowerCase();

@@ -83,6 +83,26 @@ addCompleteTaskEventListeners();
 addDeleteEventListeners();
 addEditEventListeners();
 
+// search bar events
+const searchInput = document.getElementById("search-bar-input");
+
+searchInput.addEventListener("input", () => {
+  const targetedSearch = searchInput.value.toLowerCase();
+  const tasksTitleList = document.querySelectorAll("h2");
+  const tasksDescriptionList = document.querySelectorAll("p");
+
+  tasksTitleList.forEach((task, i) => {
+    if (
+      tasksTitleList[i].textContent.toLowerCase().includes(targetedSearch) ||
+      tasksDescriptionList[i].textContent.toLowerCase().includes(targetedSearch)
+    ) {
+      task.parentNode.parentNode.parentNode.style.display = "";
+    } else {
+      task.parentNode.parentNode.parentNode.style.display = "none";
+    }
+  });
+});
+
 const mutationObserver = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     if (mutation.target.nodeName === "SECTION") {

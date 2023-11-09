@@ -31,7 +31,7 @@ export const getFormat = (
         <span>${dueDate}</span>
   
         <button
-        edit-parent="123"
+        edit-parent="${id}"
         open-edit-task-modal
         class="task-head-actions-btn center bg-gray">
           <img src="./public/edit.svg" alt="edit icon" />
@@ -147,7 +147,7 @@ export const getFormat = (
 
               <button
                 edit-task
-                task-parent="123"
+                task-parent="${id}"
                 type="button"
                 class="form-footer-button bg-red">
                 Save

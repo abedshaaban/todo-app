@@ -17,7 +17,7 @@ if (typeof Storage !== "undefined") {
   const feed = document.getElementById("feed");
 
   if (savedTasks == null || savedTasks.length == 0) {
-    feed.innerHTML = "<p>you don't have any tasks</p>";
+    feed.innerHTML = "<p>You don't have any tasks</p>";
   } else {
     feed.innerHTML = "";
 

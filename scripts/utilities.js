@@ -15,6 +15,8 @@ function deleteTask(confirmedDeleteTask) {
     }
   }
 
+  updateProgressBar(newTaskList);
+
   localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
 }
 
@@ -68,6 +70,8 @@ export function addCompleteTaskEventListeners() {
           newTaskList.push(tasksList[i]);
         }
       }
+
+      updateProgressBar(newTaskList);
 
       localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
     });
@@ -314,4 +318,25 @@ export function addEventListenerToDragAndDropTasks() {
 
   feed.addEventListener("dragover", sortableFeed);
   feed.addEventListener("dragenter", (e) => e.preventDefault());
+}
+
+export function updateProgressBar(tasksList) {
+  const progressBar = document.getElementsByClassName("task-progress-bar")[0];
+  let completedTask = 0;
+  let totalTask = tasksList.length;
+
+  for (let i = 0; i < tasksList.length; i++) {
+    const task = tasksList[i];
+
+    if (task.isCompleted) {
+      completedTask += 1;
+    }
+  }
+
+  const value = (completedTask / totalTask) * 100;
+
+  progressBar.style.setProperty(
+    "--progress-width",
+    `${Math.ceil(value / 1) * 1}%`
+  );
 }

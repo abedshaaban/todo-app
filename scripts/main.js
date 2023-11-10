@@ -7,6 +7,7 @@ import {
   addEditEventListeners,
   removeEditEventListeners,
   addEventListenerToDragAndDropTasks,
+  updateProgressBar,
 } from "./utilities.js";
 import { getFormat } from "./taskTag.js";
 
@@ -33,6 +34,8 @@ if (typeof Storage !== "undefined") {
         task?.isCompleted
       );
     }
+
+    updateProgressBar(savedTasks);
   }
 }
 

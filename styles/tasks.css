@@ -18,7 +18,7 @@
 
 .task-progress-bar {
   position: relative;
-  background: #eee;
+  background-color: #eeeeee;
   height: 20px;
   border-radius: 6px;
   overflow: hidden;
@@ -34,9 +34,10 @@
   top: 0;
   left: 0;
   height: 100%;
-  width: 23%;
-  /* background: turquoise; */
+  width: var(--progress-width);
   background: var(--secondary);
+  transition-duration: 0.6s;
+  transition-timing-function: ease-in-out;
 }
 
 .right-side-section {

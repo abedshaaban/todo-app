@@ -5,6 +5,15 @@
   padding: 10px;
   top: 0;
   position: sticky;
+  gap: 12px;
+}
+
+.clock {
+  font-size: 21px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .progress-bar-div {

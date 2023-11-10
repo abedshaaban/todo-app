@@ -1,3 +1,49 @@
+/* left and right section */
+
+.left-side-section {
+  width: 300px;
+  padding: 10px;
+  top: 0;
+  position: sticky;
+}
+
+.progress-bar-div {
+  gap: 6px;
+}
+
+.progress-bar-div label {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.task-progress-bar {
+  position: relative;
+  background: #eee;
+  height: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.task-progress-bar progress {
+  opacity: 0;
+}
+
+.task-progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 23%;
+  /* background: turquoise; */
+  background: var(--secondary);
+}
+
+.right-side-section {
+  width: 100%;
+  justify-content: center;
+}
+
 /* search bar */
 
 .search-section {

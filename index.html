@@ -90,192 +90,206 @@
     </header>
 
     <!-- main = tasks -->
-    <main>
-      <section class="search-section">
-        <div class="search-section-div flex-row">
-          <img
-            class="search-section-div-search-icon"
-            src="./public/search.svg"
-            alt="search icon" />
-
-          <input
-            id="search-bar-input"
-            class="search-section-div-input"
-            type="text"
-            placeholder="Seach title, description, priority and due date." />
-
-          <img
-            id="clear-search-bar-cross-icon"
-            class="search-section-div-cross-icon pointer"
-            src="./public/cross.svg"
-            alt="search icon" />
-        </div>
-      </section>
-
-      <section class="filter-section flex-row">
-        <div class="filter-section-div flex-row">
-          <button id="filter-by-priority">Priority</button>
-        </div>
-      </section>
-
-      <section id="feed" class="tasks-feed flex-col">
-        <div id="123" class="task flex-row" draggable="true">
-          <div class="drag-task-handler center grab">
-            <img src="./public/drag-handle-dots.svg" alt="" />
+    <main class="flex-row">
+      <section class="left-side-section flex-col">
+        <div class="progress-bar-div flex-col">
+          <label for="task-progress-completion">Progress:</label>
+          <div class="task-progress-bar">
+            <progress
+              id="task-progress-completion"
+              value="32"
+              max="100"></progress>
           </div>
+        </div>
+      </section>
 
-          <div class="task-content flex-col">
-            <div class="task-head flex-row">
-              <h2>Finish Task App</h2>
+      <section class="right-side-section flex-col">
+        <section class="search-section">
+          <div class="search-section-div flex-row">
+            <img
+              class="search-section-div-search-icon"
+              src="./public/search.svg"
+              alt="search icon" />
 
-              <div class="task-head-actions flex-row">
-                <span
-                  id="priority-label"
-                  class="task-head-actions-priority priority-high">
-                  High
-                </span>
+            <input
+              id="search-bar-input"
+              class="search-section-div-input"
+              type="text"
+              placeholder="Seach title, description, priority and due date." />
 
-                <span id="due-date-label">Due Date</span>
+            <img
+              id="clear-search-bar-cross-icon"
+              class="search-section-div-cross-icon pointer"
+              src="./public/cross.svg"
+              alt="search icon" />
+          </div>
+        </section>
 
-                <button
-                  edit-parent="123"
-                  open-edit-task-modal
-                  class="task-head-actions-btn center bg-gray">
-                  <img src="./public/edit.svg" alt="edit icon" />
-                </button>
+        <section class="filter-section flex-row">
+          <div class="filter-section-div flex-row">
+            <button id="filter-by-priority">Priority</button>
+          </div>
+        </section>
 
-                <button
-                  complete-task="123"
-                  class="task-head-actions-btn center bg-green">
-                  <img src="./public/check.svg" alt="check icon" />
-                </button>
+        <section id="feed" class="tasks-feed flex-col">
+          <div id="123" class="task flex-row" draggable="true">
+            <div class="drag-task-handler center grab">
+              <img src="./public/drag-handle-dots.svg" alt="" />
+            </div>
 
-                <button
-                  open-delete-confirmation-modal
-                  class="task-head-actions-btn center bg-red">
-                  <img src="./public/trash.svg" alt="trash icon" />
-                </button>
+            <div class="task-content flex-col">
+              <div class="task-head flex-row">
+                <h2>Finish Task App</h2>
 
-                <dialog delete-confirmation-modal>
-                  <form id="form-task" method="dialog">
-                    <div class="form-header">Delete Task</div>
+                <div class="task-head-actions flex-row">
+                  <span
+                    id="priority-label"
+                    class="task-head-actions-priority priority-high">
+                    High
+                  </span>
 
-                    <div class="form-content flex-col">
-                      <div style="text-wrap: wrap">
-                        Deleting this post is not reversable. Once the task is
-                        deleted, it is gone for ever.
-                      </div>
-                    </div>
+                  <span id="due-date-label">Due Date</span>
 
-                    <div class="form-footer">
-                      <button
-                        close-delete-confirmation-modal
-                        type="reset"
-                        class="form-footer-button">
-                        Close
-                      </button>
+                  <button
+                    edit-parent="123"
+                    open-edit-task-modal
+                    class="task-head-actions-btn center bg-gray">
+                    <img src="./public/edit.svg" alt="edit icon" />
+                  </button>
 
-                      <button
-                        confirmed-delete-task
-                        task-parent="123"
-                        type="button"
-                        class="form-footer-button bg-red">
-                        Delete
-                      </button>
-                    </div>
-                  </form>
-                </dialog>
+                  <button
+                    complete-task="123"
+                    class="task-head-actions-btn center bg-green">
+                    <img src="./public/check.svg" alt="check icon" />
+                  </button>
 
-                <dialog show-edit-task-modal>
-                  <form id="form-task-edit" method="dialog">
-                    <div class="form-header">Edit Task</div>
+                  <button
+                    open-delete-confirmation-modal
+                    class="task-head-actions-btn center bg-red">
+                    <img src="./public/trash.svg" alt="trash icon" />
+                  </button>
 
-                    <div
-                      id="form-task-edit-content"
-                      class="form-content flex-col">
-                      <div class="form-content-field flex-col">
-                        <label>Title:</label>
-                        <input
-                          type="text"
-                          id="edit-task-title"
-                          maxlength="17"
-                          required
-                          value="${title}" />
-                        <span class="text-sm">(max characters is 17)</span>
-                      </div>
+                  <dialog delete-confirmation-modal>
+                    <form id="form-task" method="dialog">
+                      <div class="form-header">Delete Task</div>
 
-                      <div class="form-content-field flex-col">
-                        <label>Description:</label>
-                        <input
-                          type="text"
-                          id="edit-task-description"
-                          maxlength="250"
-                          value="${description}" />
-                        <span class="text-sm">(max characters is 250)</span>
+                      <div class="form-content flex-col">
+                        <div style="text-wrap: wrap">
+                          Deleting this post is not reversable. Once the task is
+                          deleted, it is gone for ever.
+                        </div>
                       </div>
 
-                      <div class="form-content-field flex-col">
-                        <label>Due Date:</label>
-                        <input
-                          type="date"
-                          id="edit-task-due-date"
-                          class="pointer"
-                          required
-                          value="${dueDate}" />
+                      <div class="form-footer">
+                        <button
+                          close-delete-confirmation-modal
+                          type="reset"
+                          class="form-footer-button">
+                          Close
+                        </button>
+
+                        <button
+                          confirmed-delete-task
+                          task-parent="123"
+                          type="button"
+                          class="form-footer-button bg-red">
+                          Delete
+                        </button>
+                      </div>
+                    </form>
+                  </dialog>
+
+                  <dialog show-edit-task-modal>
+                    <form id="form-task-edit" method="dialog">
+                      <div class="form-header">Edit Task</div>
+
+                      <div
+                        id="form-task-edit-content"
+                        class="form-content flex-col">
+                        <div class="form-content-field flex-col">
+                          <label>Title:</label>
+                          <input
+                            type="text"
+                            id="edit-task-title"
+                            maxlength="17"
+                            required
+                            value="${title}" />
+                          <span class="text-sm">(max characters is 17)</span>
+                        </div>
+
+                        <div class="form-content-field flex-col">
+                          <label>Description:</label>
+                          <input
+                            type="text"
+                            id="edit-task-description"
+                            maxlength="250"
+                            value="${description}" />
+                          <span class="text-sm">(max characters is 250)</span>
+                        </div>
+
+                        <div class="form-content-field flex-col">
+                          <label>Due Date:</label>
+                          <input
+                            type="date"
+                            id="edit-task-due-date"
+                            class="pointer"
+                            required
+                            value="${dueDate}" />
+                        </div>
+
+                        <div class="form-content-field-options flex-col">
+                          <label>Priority:</label>
+                          <select
+                            id="edit-task-priority"
+                            class="pointer"
+                            required>
+                            <option value="" selected disabled hidden>
+                              Priority
+                            </option>
+
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                          </select>
+                        </div>
                       </div>
 
-                      <div class="form-content-field-options flex-col">
-                        <label>Priority:</label>
-                        <select
-                          id="edit-task-priority"
-                          class="pointer"
-                          required>
-                          <option value="" selected disabled hidden>
-                            Priority
-                          </option>
+                      <div class="form-footer">
+                        <button
+                          close-edit-task-modal
+                          type="reset"
+                          class="form-footer-button bg-red">
+                          Discard
+                        </button>
 
-                          <option value="High">High</option>
-                          <option value="Medium">Medium</option>
-                          <option value="Low">Low</option>
-                        </select>
+                        <button
+                          edit-task
+                          task-parent="123"
+                          type="button"
+                          class="form-footer-button bg-green">
+                          Save
+                        </button>
                       </div>
-                    </div>
+                    </form>
+                  </dialog>
+                </div>
+              </div>
 
-                    <div class="form-footer">
-                      <button
-                        close-edit-task-modal
-                        type="reset"
-                        class="form-footer-button bg-red">
-                        Discard
-                      </button>
-
-                      <button
-                        edit-task
-                        task-parent="123"
-                        type="button"
-                        class="form-footer-button bg-green">
-                        Save
-                      </button>
-                    </div>
-                  </form>
-                </dialog>
+              <div class="task-description">
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type.
+                </p>
               </div>
             </div>
 
-            <div class="task-description">
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type.
-              </p>
+            <div class="mark-as-done">
+              <img src="./public/done.png" alt="done" />
             </div>
           </div>
-
-          <div class="mark-as-done">
-            <img src="./public/done.png" alt="done" />
-          </div>
-        </div>
+        </section>
       </section>
     </main>
   </body>

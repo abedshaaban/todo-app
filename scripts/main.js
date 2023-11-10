@@ -8,8 +8,12 @@ import {
   removeEditEventListeners,
   addEventListenerToDragAndDropTasks,
   updateProgressBar,
+  getCurrentTime,
 } from "./utilities.js";
 import { getFormat } from "./taskTag.js";
+
+// time
+setInterval(getCurrentTime, 1000);
 
 // load tasks from local storage
 if (typeof Storage !== "undefined") {

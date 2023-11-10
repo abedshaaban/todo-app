@@ -334,3 +334,19 @@ export function updateProgressBar() {
     `${Math.ceil(value / 1) * 1}%`
   );
 }
+
+export function getCurrentTime() {
+  const clock = document.getElementsByClassName("clock")[0];
+
+  const current = new Date();
+
+  let ss = current.getSeconds();
+  let mm = current.getMinutes();
+  let hh = current.getHours();
+
+  const hours = `${hh < 10 ? `0${hh}` : hh}`;
+  const minutes = `${mm < 10 ? `0${mm}` : mm}`;
+  const seconds = `${ss < 10 ? `0${ss}` : ss}`;
+
+  clock.textContent = `${hours}:${minutes}:${seconds}`;
+}

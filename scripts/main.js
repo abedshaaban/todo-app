@@ -35,7 +35,7 @@ if (typeof Storage !== "undefined") {
       );
     }
 
-    updateProgressBar(savedTasks);
+    updateProgressBar();
   }
 }
 

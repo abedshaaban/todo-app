@@ -15,7 +15,7 @@ function deleteTask(confirmedDeleteTask) {
     }
   }
 
-  updateProgressBar(newTaskList);
+  updateProgressBar();
 
   localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
 }
@@ -71,7 +71,7 @@ export function addCompleteTaskEventListeners() {
         }
       }
 
-      updateProgressBar(newTaskList);
+      updateProgressBar();
 
       localStorage.setItem("tasks-list", JSON.stringify(newTaskList));
     });
@@ -320,18 +320,12 @@ export function addEventListenerToDragAndDropTasks() {
   feed.addEventListener("dragenter", (e) => e.preventDefault());
 }
 
-export function updateProgressBar(tasksList) {
+export function updateProgressBar() {
+  const totalTask = document.getElementsByClassName("task").length;
+  const completedTask = document.getElementsByClassName(
+    "mark-as-done-active"
+  ).length;
   const progressBar = document.getElementsByClassName("task-progress-bar")[0];
-  let completedTask = 0;
-  let totalTask = tasksList.length;
-
-  for (let i = 0; i < tasksList.length; i++) {
-    const task = tasksList[i];
-
-    if (task.isCompleted) {
-      completedTask += 1;
-    }
-  }
 
   const value = (completedTask / totalTask) * 100;
 

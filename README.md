@@ -8,6 +8,7 @@ An extraordinary to-do app with lots of features and functionalities.
 - [x] Chips Filter
 - [x] Persistent Storage
 - [x] Create, Edit, and Delete Task
+- [x] Drag and Drop Tasks
 - [x] Progress Bar For Done Tasks
 - [ ] Theme Customization
 - [ ] Share Todo List
